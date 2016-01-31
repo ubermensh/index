@@ -22,4 +22,4 @@ n stable
 
 cd /vagrant
 # Install the local dependencies
-npm install --save  grunt-cli bower react selenium-webdriver babel mocha chai formidable@latest express
+npm install --save  grunt-cli bower react selenium-webdriver babel mocha chai formidable@latest express jade
