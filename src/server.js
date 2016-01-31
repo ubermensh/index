@@ -9,26 +9,16 @@ var bmiCalculator = require('./modules/bmiCalculator');
 var app = express();
 
 app.get('/', function (req, res) {
-    if (req.method.toLowerCase() == 'get') {
         displayForm(res);
-    } else if (req.method.toLowerCase() == 'post') {
-        processAllFieldsOfTheForm(req, res);
-    }
-
+});
+app.post('/', function (req, res) {
+    processFormFields(req, res);
 });
 
 function displayForm(res) {
-    fs.readFile(path.resolve(__dirname, 'form.html'), function (err, data) {
-	if(err) throw err;
-        res.writeHead(200, {
-            'Content-Type': 'text/html',
-                'Content-Length': data.length
-        });
-        res.write(data);
-        res.end();
-    });
-}
-function processAllFieldsOfTheForm(req, res) {
+    res.sendFile(path.resolve(__dirname, 'form.html'));
+};
+function processFormFields(req, res) {
     var form = new formidable.IncomingForm();
 
     form.parse(req, function (err, fields ) {
