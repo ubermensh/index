@@ -1,11 +1,13 @@
 var http = require('http');
+var path = require('path');
 var fs = require('fs');
 var server = http.createServer(function (req, res) {
     displayForm(res);
 });
 
 function displayForm(res) {
-    fs.readFile('form.html', function (err, data) {
+    fs.readFile(path.resolve(__dirname, 'form.html'), function (err, data) {
+	if(err) throw err;  
         res.writeHead(200, {
             'Content-Type': 'text/html',
                 'Content-Length': data.length
