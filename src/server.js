@@ -3,7 +3,7 @@ var fs = require('fs');
 var formidable = require('formidable');
 var path = require('path');
 var util = require('util');
-
+var bmiCalculator = require('./modules/bmiCalculator');
 var server = http.createServer(function (req, res) {
     if (req.method.toLowerCase() == 'get') {
         displayForm(res);
@@ -28,16 +28,20 @@ function processAllFieldsOfTheForm(req, res) {
     var form = new formidable.IncomingForm();
 
     form.parse(req, function (err, fields ) {
-        //Store the data from the fields in your data store.
-        //The data store could be a file or database or any other store based
-        //on your application.
+        if (err) throw err;
+
         res.writeHead(200, {
             'content-type': 'text/plain'
         });
-        res.write('received the data:\n\n');
+        var bmi = bmiCalculator(Number(fields.height), Number(fields.weight));
+//        res.write('received the data:\n\n');
+//        res.write(fields);
+//        console.log('_______');
+        res.write('bmi:'+bmi);
         res.end(util.inspect({
             fields: fields
         }));
+
     });
 }
 
