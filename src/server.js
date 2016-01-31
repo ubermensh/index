@@ -1,10 +1,14 @@
 var http = require('http');
+var express = require('express');
 var fs = require('fs');
 var formidable = require('formidable');
 var path = require('path');
 var util = require('util');
 var bmiCalculator = require('./modules/bmiCalculator');
-var server = http.createServer(function (req, res) {
+
+var app = express();
+
+app.get('/', function (req, res) {
     if (req.method.toLowerCase() == 'get') {
         displayForm(res);
     } else if (req.method.toLowerCase() == 'post') {
@@ -45,5 +49,6 @@ function processAllFieldsOfTheForm(req, res) {
     });
 }
 
-server.listen(1185);
-console.log("server listening on 1185");
+var server = app.listen(1185, function() {
+    console.log("server listening on 1185");
+});
