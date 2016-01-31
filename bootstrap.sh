@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+set -o vi
 
 echo "--- Updating packages list ---"
 sudo apt-get update
@@ -20,5 +20,6 @@ make install
 # Install node.js/npm using n
 n stable 
 
-# Install the global dependencies
-npm install -g grunt-cli bower react selenium-webdriver babel mocha
+cd /vagrant
+# Install the local dependencies
+npm install --save  grunt-cli bower react selenium-webdriver babel mocha chai
