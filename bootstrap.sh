@@ -20,6 +20,7 @@ echo "--- Install node.js/npm using n--"
 n stable 
 
 echo "--- Install the local dependencies ---"
+#TODO do not load if packages are present. or just $node init package.json
 cd /vagrant
 npm install --save-dev  grunt-cli bower selenium-webdriver mocha chai
 npm install --save-dev formidable@latest express jade
