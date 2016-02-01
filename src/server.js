@@ -1,9 +1,7 @@
-var http = require('http');
+//require("babel-core/register");
 var express = require('express');
-var fs = require('fs');
 var formidable = require('formidable');
 var path = require('path');
-var util = require('util');
 var bmiCalculator = require('./modules/bmiCalculator');
 
 var app = express();
