@@ -1,4 +1,10 @@
 # index
 
-https://en.wikipedia.org/wiki/Body_mass_index
-Надо сделать форму, в которую вводят рост, вес и единицу измерения, а в ответ получается индекс. Сделать красиво в том плане, что: разбить на value object'ы, написать для них юниты и интеграционные через ui(selenium).  Надо использовать es6(т.е. подключить babel)
+node application to calculate bmi https://en.wikipedia.org/wiki/Body_mass_index
+
+#how to start
+`vagrant up` in the cloned directory
+`vagrant ssh`
+inside vagrant:
+`node /vagrant/src/server.js`
+go to http://localhost:1185/
