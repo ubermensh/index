@@ -34,5 +34,5 @@ function processFormFields(req, res) {
 }
 
 var server = app.listen(1185, function () {
-    console.log("server listening on 1185");
+    console.log("server listening on http://localhost:1185/");
 });
