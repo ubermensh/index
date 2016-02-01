@@ -1,4 +1,4 @@
-//require("babel-core/register");
+require("babel-polyfill");
 var express = require('express');
 var formidable = require('formidable');
 var path = require('path');
