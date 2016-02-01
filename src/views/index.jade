@@ -1,14 +1,14 @@
 html
-  body
-    form(action='', method='post', enctype='multipart/form-data')
-      fieldset
-        label(for='height') Your height (centimeters):
-        input#height(type='number', name='height')
-        br
-        label(for='weight') Your weight (kilograms):
-        input#weight(type='number', name='weight')
-        br
-        input(type='submit', value='Compute BMI')
-    div
-      p your bmi is:
-      h3= bmi
+    body
+        form(action='', method='post', enctype='multipart/form-data')
+            fieldset
+                label(for='height') Your height (centimeters):
+                input#height(type='number', name='height')
+                br
+                label(for='weight') Your weight (kilograms):
+                input#weight(type='number', name='weight')
+                br
+                input(type='submit', value='Compute BMI')
+        div
+            p your bmi is:
+            h3= bmi

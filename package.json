@@ -87,7 +87,7 @@
     "selenium-webdriver": "^2.48.2"
   },
   "scripts": {
-    "start": "nodemon src/server.js ",
+    "start": "nodemon -L src/server.js ",
     "test": "mocha"
   },
   "repository": {
