@@ -1,14 +1,23 @@
+doctype
 html
+    head
+        title bmi calculator
+        link(href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css', rel='stylesheet')
     body
-        form(action='', method='post', enctype='multipart/form-data')
-            fieldset
-                label(for='height') Your height (centimeters):
-                input#height(type='number', name='height')
-                br
-                label(for='weight') Your weight (kilograms):
-                input#weight(type='number', name='weight')
-                br
-                input(type='submit', value='Compute BMI')
-        div
-            p your bmi is:
-            h3= bmi
+        div.container
+            h3 bmi calculator
+            div.jumbotron
+                form(role='form', action='', method='post', enctype='multipart/form-data')
+                    .form-group
+                        label(for='height') Your height (centimeters):
+                        input#height(type='number', name='height', required)
+                    .form-group
+                        label(for='weight') Your weight (kilograms):
+                        input#weight(type='number', name='weight', required)
+
+                    button.btn.btn-primary(type='submit') Submit
+
+            p
+                h3 your bmi:
+                h3= bmi
+
