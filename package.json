@@ -84,11 +84,13 @@
     "mocha": "^2.4.5",
     "nodemon": "^1.8.1",
     "react": "^0.14.7",
-    "selenium-webdriver": "^2.48.2"
+    "selenium-webdriver": "^2.48.2",
+    "should": "^8.2.1",
+    "supertest": "^1.1.0"
   },
   "scripts": {
     "start": "nodemon -L src/server.js ",
-    "test": "mocha"
+    "test": "$(npm bin)/mocha test/unitTest"
   },
   "repository": {
     "type": "git",
