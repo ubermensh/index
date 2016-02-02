@@ -32,9 +32,6 @@ function processFormFields(req, res) {
         var bmi = bmiCalculator(Number(fields.height), Number(fields.weight));
         var formData = {weight: weight, height: height};
         renderIndex(res, {formData: formData,  bmi: bmi});
-//                height: fields.height,
-//                weight: fields.weight,
-
         res.end();
     });
 }
