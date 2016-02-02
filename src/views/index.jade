@@ -8,7 +8,7 @@ html
             h3 bmi calculator
             div.jumbotron
                 div.row
-                    div.col-sm-6
+                    div.col-sm-5
                         form(role='form', action='', method='post', enctype='multipart/form-data')
                             .form-group
                                 label(for='height') Your height (centimeters):
@@ -25,6 +25,6 @@ html
 
                             button.btn.btn-primary(type='submit') Submit
 
-                    div.col-sm-3
-                        h3 your bmi:
-                        h3= bmi
+                    div.col-sm-5
+                        div.row
+                            h3 your bmi: #{bmi}

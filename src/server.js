@@ -27,8 +27,9 @@ function processFormFields(req, res) {
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields) {
         if (err) throw err;
-        var weight = fields.weight;
         var height = fields.height;
+        var weight = fields.weight;
+        console.log(height, weight);
         var bmi = bmiCalculator(Number(fields.height), Number(fields.weight));
         var formData = {weight: weight, height: height};
         renderIndex(res, {formData: formData,  bmi: bmi});
