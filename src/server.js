@@ -28,7 +28,7 @@ function processFormFields(req, res) {
     form.parse(req, function (err, fields) {
         if (err) throw err;
         var bmi = bmiCalculator(Number(fields.height), Number(fields.weight));
-        res.render('index', {bmi: bmi});
+        renderIndex(res, {bmi: bmi});
         res.end();
     });
 }
