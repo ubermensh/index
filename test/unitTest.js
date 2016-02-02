@@ -5,19 +5,32 @@ var should = require("should");
 
 var server = supertest.agent("http://localhost:1185");
 
-// UNIT test begin
-describe("SAMPLE unit test",function(){
-    // #1 should return home page
-    it("should return home page",function(done){
-        // calling home page api
+describe("calculator page",function(){
+
+    it('should show a form',function(done){
         server
             .get("/")
-            .expect(200) // THis is HTTP response
+            .expect(200)
             .end(function(err,res){
-                // HTTP status should be 200
                 res.status.should.equal(200);
                 done();
             });
     });
+
+    it('should resolve all wrong requests to index',function(done){
+        server
+            .get("/some-error-route")
+            .expect(200)
+            .end(function(err,res){
+                if (err) return done(err);
+                res.status.should.equal(200);
+                done();
+            });
+    });
+
+    it('should refuse empty submissions');
+    it('should refuse partial submissions');
+    it('should keep values on partial submissions');
+    it('should accept complete submissions');
 
 })

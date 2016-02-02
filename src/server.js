@@ -7,10 +7,10 @@ var bmiCalculator = require('./modules/bmiCalculator');
 var app = express();
 app.set('view engine', 'jade');
 app.set('views', path.resolve(__dirname, 'views'));
-app.get('/', function (req, res) {
+app.get('*', function (req, res) {
     renderIndex(res);
 });
-app.post('/', function (req, res) {
+app.post('*', function (req, res) {
     processFormFields(req, res);
 });
 
