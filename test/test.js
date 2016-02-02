@@ -1,14 +1,15 @@
 var webdriver = require('selenium-webdriver');
 
+var keyword = "chris le twitter";
 
-var driver = new webdriver.Builder()
-    .withCapabilities(webdriver.Capabilities.chrome())
-    .build();
+var driver = new webdriver.Builder().
+    usingServer('http://localhost:4444/wd/hub').
+    withCapabilities(webdriver.Capabilities.chrome()).
+    build();
 
 driver.get('http://www.google.com');
 driver.findElement(webdriver.By.name('q')).sendKeys(keyword);
 driver.findElement(webdriver.By.name('btnG')).click();
-console.log('!!! test');
 driver.wait(function() {
     return driver.getTitle().then(function(title) {
         driver.getPageSource().then(function(html) {
@@ -19,7 +20,6 @@ driver.wait(function() {
 }, 1000);
 
 driver.quit();
-
 
 
 
