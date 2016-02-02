@@ -12,10 +12,16 @@ html
                         form(role='form', action='', method='post', enctype='multipart/form-data')
                             .form-group
                                 label(for='height') Your height (centimeters):
-                                input#height(type='number', name='height', required)
+                                -if (locals.formData)
+                                    input#height(type='number', name='height', placeholder='#{formData.height}', required)
+                                -else
+                                    input#height(type='number', name='height', required)
                             .form-group
                                 label(for='weight') Your weight (kilograms):
-                                input#weight(type='number', name='weight', required)
+                                -if (locals.formData)
+                                    input#weight(type='number', name='weight', placeholder='#{formData.weight}', required)
+                                -else
+                                    input#weight(type='number', name='weight', required)
 
                             button.btn.btn-primary(type='submit') Submit
 

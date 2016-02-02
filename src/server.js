@@ -27,12 +27,18 @@ function processFormFields(req, res) {
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields) {
         if (err) throw err;
+        var weight = fields.weight;
+        var height = fields.height;
         var bmi = bmiCalculator(Number(fields.height), Number(fields.weight));
-        res.render('index', {bmi: bmi});
+        var formData = {weight: weight, height: height};
+        renderIndex(res, {formData: formData,  bmi: bmi});
+//                height: fields.height,
+//                weight: fields.weight,
+
         res.end();
     });
 }
 
 var server = app.listen(1185, function () {
-    console.log("server listening on 1185");
+    console.log("server listening on http://localhost:1185/");
 });

@@ -23,34 +23,33 @@ driver.quit();
 
 
 
+/*
+var webdriver = require('selenium-webdriver');
+var SeleniumServer = require('selenium-webdriver/remote').SeleniumServer;
+var chrome = require('selenium-webdriver/chrome');
+var path = require('chromedriver').path;
+var chai = require('chai');
+chai.use(require('chai-as-promised'));
+var expect = chai.expect;
+
+var service = new chrome.ServiceBuilder(path).build();
+chrome.setDefaultService(service);
+
+//var driver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
+var server = new SeleniumServer('/selenium-server-standalone-2.50.1.jar', {
+    port: 4444
+});
+
+server.start();
 
 
-//var webdriver = require('selenium-webdriver');
-//var SeleniumServer = require('selenium-webdriver/remote').SeleniumServer;
-//var chrome = require('selenium-webdriver/chrome');
-//var path = require('chromedriver').path;
-//var chai = require('chai');
-//chai.use(require('chai-as-promised'));
-//var expect = chai.expect;
-//
-//var service = new chrome.ServiceBuilder(path).build();
-//chrome.setDefaultService(service);
-//
-////var driver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
-//var server = new SeleniumServer('/selenium-server-standalone-2.50.1.jar', {
-//    port: 4444
-//});
-//
-//server.start();
-//
-//
-//var driver = new webdriver.Builder()
-//    .usingServer(server.address())
-//    .withCapabilities(webdriver.Capabilities.chrome())
-//    .build();
-//
-//driver.get('http://localhost:1185/');
-//driver.findElement(webdriver.By.name('height')).sendKeys('222');
-//driver.findElement(webdriver.By.name('weight')).sendKeys('120');
-//driver.findElement(webdriver.By.name('submit')).click();
-//driver.quit();
+var driver = new webdriver.Builder()
+    .usingServer(server.address())
+    .withCapabilities(webdriver.Capabilities.chrome())
+    .build();
+
+driver.get('http://localhost:1185/');
+driver.findElement(webdriver.By.name('height')).sendKeys('222');
+driver.findElement(webdriver.By.name('weight')).sendKeys('120');
+driver.findElement(webdriver.By.name('submit')).click();
+driver.quit();*/
