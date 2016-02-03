@@ -1,3 +1,4 @@
+"use strict";
 require("babel-polyfill");
 var express = require('express');
 var formidable = require('formidable');
@@ -27,11 +28,10 @@ function processFormFields(req, res) {
     var form = new formidable.IncomingForm();
     form.parse(req, function (err, fields) {
         if (err) throw err;
-        var height = fields.height;
-        var weight = fields.weight;
-        console.log(height, weight);
-        var bmi = bmiCalculator(Number(fields.height), Number(fields.weight));
-        var formData = {weight: weight, height: height};
+        let height = fields.height;
+        let weight = fields.weight;
+        let bmi = bmiCalculator(Number(fields.height), Number(fields.weight));
+        let formData = {weight: weight, height: height};
         renderIndex(res, {formData: formData,  bmi: bmi});
         res.end();
     });
