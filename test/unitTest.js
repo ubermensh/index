@@ -1,3 +1,4 @@
+"use strict";
 var supertest = require("supertest");
 var should = require("should");
 var assert = require("assert");
@@ -39,10 +40,10 @@ describe("calculator page",function(){
 
     it('should calculate a bmi through module',function(done){
 
-        var heightRandom = getRandomParameter();
-        var weightRandom = getRandomParameter();
+        let heightRandom = getRandomParameter();
+        let weightRandom = getRandomParameter();
         //bmi generated with same module as in server
-        var bmiFromRandom = bmiCalculator(heightRandom, weightRandom);
+        let bmiFromRandom = bmiCalculator(heightRandom, weightRandom);
 
         server
             .post("/")
@@ -51,16 +52,16 @@ describe("calculator page",function(){
             .expect(200)
             .end(function(err,res){
                 if (err) return done(err);
-                assert.strictEqual(true, res.text.includes('your bmi: '+bmiFromRandom));
+                assert.strictEqual(true, res.text.includes(`your bmi: ${bmiFromRandom}`));
                 res.status.should.equal(200);
                 done();
             });
     });
 
     it('should generate correct bmi (compare to constant)',function(done){
-        var height = 180;
-        var weight = 75;
-        var correctBmi = 23.1;
+        let height = 180;
+        let weight = 75;
+        let correctBmi = 23.1;
         server
             .post("/")
             .field('height', height)
@@ -68,14 +69,14 @@ describe("calculator page",function(){
             .expect(200)
             .end(function(err,res){
                 if (err) return done(err);
-                assert.strictEqual(true, res.text.includes('your bmi: '+correctBmi));
+                assert.strictEqual(true, res.text.includes(`your bmi: ${correctBmi}`));
                 res.status.should.equal(200);
                 done();
             });
     });
     it('should leave entered values in placeholders after submission', function(done){
-        var height = getRandomParameter();
-        var weight = getRandomParameter();
+        let height = getRandomParameter();
+        let weight = getRandomParameter();
         server
             .post("/")
             .field('height', height)
@@ -83,8 +84,9 @@ describe("calculator page",function(){
             .expect(200)
             .end(function(err,res){
                 if (err) return done(err);
-                assert.strictEqual(true, res.text.includes('name="height" placeholder="'+height));
-                assert.strictEqual(true, res.text.includes('name="weight" placeholder="'+weight));
+//                console.log(`name="height" placeholder="${height}"`);
+                assert.strictEqual(true, res.text.includes(`name="height" placeholder="${height}"`));
+                assert.strictEqual(true, res.text.includes(`name="weight" placeholder="${weight}"`));
                 res.status.should.equal(200);
                 done();
             });
@@ -92,6 +94,7 @@ describe("calculator page",function(){
     it('should refuse empty submissions');
     it('should refuse partial submissions');
     it('should keep values on partial submissions');
+    it('should accept complete submissions');
     it('should accept complete submissions');
 
 })
