@@ -6,9 +6,6 @@ var bmiCalculator = require("../src/modules/bmiCalculator");
 // This agent refers to PORT where program is runninng.
 var server = supertest.agent("http://localhost:1185");
 
-function containsSubstring(str, substr){
-    return str.indexOf(substr) > -1;
-}
 //range 1-250
 function getRandomParameter() {
     return Math.round(Math.random() * (250 - 1) + 1);
@@ -22,8 +19,8 @@ describe("calculator page",function(){
             .expect(200)
             .end(function(err,res){
                 if (err) return done(err);
-                assert.strictEqual(true,  containsSubstring(res.text, 'bmi calculator'));
-                assert.strictEqual(true, containsSubstring(res.text, 'Your height (centimeters):'));
+                assert.strictEqual(true,  res.text.includes('bmi calculator'));
+                assert.strictEqual(true, res.text.includes('Your height (centimeters):'));
                 res.status.should.equal(200);
                 done();
             });
@@ -35,7 +32,7 @@ describe("calculator page",function(){
             .expect(200)
             .end(function(err,res){
                 if (err) return done(err);
-                assert.strictEqual(true, containsSubstring(res.text, 'Your height (centimeters):'));
+                assert.strictEqual(true, res.text.includes('Your height (centimeters):'));
                 done();
             });
     });
@@ -54,7 +51,7 @@ describe("calculator page",function(){
             .expect(200)
             .end(function(err,res){
                 if (err) return done(err);
-                assert.strictEqual(true, containsSubstring(res.text, 'your bmi: '+bmiFromRandom));
+                assert.strictEqual(true, res.text.includes('your bmi: '+bmiFromRandom));
                 res.status.should.equal(200);
                 done();
             });
@@ -71,7 +68,7 @@ describe("calculator page",function(){
             .expect(200)
             .end(function(err,res){
                 if (err) return done(err);
-                assert.strictEqual(true, containsSubstring(res.text, 'your bmi: '+correctBmi));
+                assert.strictEqual(true, res.text.includes('your bmi: '+correctBmi));
                 res.status.should.equal(200);
                 done();
             });
@@ -86,8 +83,8 @@ describe("calculator page",function(){
             .expect(200)
             .end(function(err,res){
                 if (err) return done(err);
-                assert.strictEqual(true, containsSubstring(res.text, 'name="height" placeholder="'+height));
-                assert.strictEqual(true, containsSubstring(res.text, 'name="weight" placeholder="'+weight));
+                assert.strictEqual(true, res.text.includes('name="height" placeholder="'+height));
+                assert.strictEqual(true, res.text.includes('name="weight" placeholder="'+weight));
                 res.status.should.equal(200);
                 done();
             });
